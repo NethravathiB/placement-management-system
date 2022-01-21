@@ -1,0 +1,89 @@
+{% extends "navbar.html" %}
+{% block title %}
+Add Company information
+{% endblock title %}
+
+{% block body %}
+<br><br><br><br>
+<div class="container mt-4">
+  <div class="display-4 text-center text-success">Add Company Data</div>
+<br>
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card">
+            {% include "message.html" %}
+            <h4 class="text-center text-success">Company</h4>
+            <div class="card-body bg-light">
+
+                <form action="/addcompanyinfo" method="post">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="ccode" placeholder="Enter the company Code" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="cname" placeholder="Enter company Name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="email" class="form-control mt-2" name="cemail" placeholder="Enter company email"  value="" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="number" class="form-control mt-2" name="no_jobs" placeholder="jobs Available?" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="job_title" placeholder="Enter the title of job" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="skills_required" placeholder="Enter the skills required" required>
+                    </div>
+                 
+                    <br>
+                    <button class="btn btn-info" type="submit">Add</button>
+                    
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+     <div class="col-md-8">
+     <div class="card mb-3" >
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img src="https://source.unsplash.com/600x1000/?business,company" class="img-fluid rounded-start" alt="...">
+          </div>
+          <div class="col-md-8 ">
+            <div class="card-body bg-dark">
+              <h5 class="card-title text-center bg-light ">Company data</h5>
+              <div class="card bg-dark" style="width: 28rem;">
+                <ul class="list-group list-group-flush bg-dark">
+                  <li class="list-group-item">Company  Code :<b> {{postsdata.ccode}}</b> </li>
+                  <li class="list-group-item">Company  Name :<b> {{postsdata.cname}}</b></li>
+                  <li class="list-group-item">company email :<b>{{postsdata.cemail}} </b></li>
+                  <li class="list-group-item">job vacancies : <b>{{postsdata.no_jobs}}</b> </li>
+                  <li class="list-group-item">job title     : <b>{{postsdata.job_title}}</b></li>
+                  <li class="list-group-item">skills required : <b>{{postsdata.skills_required}}</b></li>
+                  <li class="list-group-item"> <a href="/cedit/ {{postsdata.id}} ">Edit</a>
+                                 <a class="ml-4" confirm('Are you sure to delete data');  href="/cdelete/ {{postsdata.id}}">Delete</a>
+                                 
+                  </li>
+                  
+                </ul>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+</div>    
+</div>
+{% endblock body %}

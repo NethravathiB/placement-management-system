@@ -1,0 +1,53 @@
+{% extends 'baselogin.html' %}
+{% block title %}
+Applicant  Details
+{% endblock title %}
+{% block form %}
+
+
+<div class="row">
+<div class="col-md-4">
+
+</div>
+<div class="col-md-4">
+<h1>Applicant Details</h1>
+<div class="card p-3">
+
+
+    <table class="table table-dark">
+        <thead>
+            <tr>
+            <th scope="col">DETAILS</th>
+        </tr>
+ <tr>       
+            <th  scope="col">{{data.username}}</th>
+ </tr>           
+<tr>
+            <th scope="col">{{data.ccode}}</th>
+</tr>            
+<tr>
+            <th scope="col">{{data.studentname}}</th>
+</tr>            
+<tr>
+            <th scope="col">{{data.studentaddress}}</th>
+</tr>            
+<tr>
+            <th  scope="col">{{data.cgpa}}</th>
+</tr>            
+        
+            
+    </thead>
+      
+                   
+                
+ 
+</div>
+</div></tr>
+<div class="col-md-4">
+
+</div>
+</div>
+
+     
+       
+     {% endblock form %}

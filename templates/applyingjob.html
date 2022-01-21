@@ -1,0 +1,95 @@
+{% extends "navbar.html" %}
+{% block title %}
+job application
+{% endblock title %}
+
+{% block body %}
+<br><br><br><br>
+<div class="container mt-4">
+  <div class="display-4 text-center text-success">Apply for job</div>
+<br>
+<div class="row">
+
+    <div class="col-md-4">
+
+        <div class="card">
+            {% include "message.html" %}
+            <h4 class="text-center text-success">Company</h4>
+            <div class="card-body bg-light">
+
+                <form action="/jobapplication" method="post">
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="username" value="{{current_user.username}}" readonly required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="ccode" placeholder="Enter company code" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="jobtype" placeholder="Enter job type"  value="" required>
+                    </div>
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="studentname" placeholder="Enter Applicant name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="studentaddress" placeholder="Enter the address of applicant" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="usn" placeholder="Enter the usn" required>
+                    </div>
+
+                    <div class="form-group">
+                        <input type="text" class="form-control mt-2" name="cgpa" placeholder="Enter cgpa" required>
+                    </div>
+                 
+                    <br>
+                    <button class="btn btn-info" type="submit">Apply</button>
+                    
+
+
+
+                </form>
+
+            </div>
+        </div>
+    </div>
+
+     <div class="col-md-8">
+     <h3 class="text-center text-white bg-danger" >Available Jobs</h3>
+     <table class="table table-dark">
+  <thead>
+    <tr>
+      
+      <th scope="col">Company code</th>
+      <th scope="col">Company name</th>
+      <th scope="col">Company email</th>
+      <th scope="col">Job vacancies</th>
+      <th scope="col">Job title</th>
+      <th scope="col">skills required</th>
+    </tr>
+  </thead>
+
+  <tbody>
+  {% for post in query %}
+  <tr>
+      <td>{{post.ccode}} </td>
+      <td>{{post.cname}}</td>
+      <td>{{post.cemail}}</td>
+      <td>{{post.no_jobs}}</td>
+      <td>{{post.job_title}}</td>
+      <td>{{post.skills_required}}</td>
+    </tr>
+  {% endfor %}
+    
+  </tbody>
+
+</table>
+    </div>
+
+</div>    
+</div>
+{% endblock body %}

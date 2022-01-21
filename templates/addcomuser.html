@@ -1,0 +1,72 @@
+{% extends 'baselogin.html' %}
+{% block title %}
+companyuser
+{% endblock title %}
+{% block form %}
+
+
+<div class="row">
+<div class="col-md-4">
+
+<a href="/adminlogout" class="btn btn-danger">Logout</a>
+
+</div>
+<div class="col-md-4">
+    <h2>Add company user</h2>
+    {% include "message.html" %}
+    <form action="/addcomuser" method="post">
+        <div class="form-group">
+        <input type="email" class="form-control mt-2" placeholder="enter the email" name="email" required>
+        </div>
+
+        <div class="form-group">
+        <input type="text" class="form-control mt-2" placeholder="enter the password" name="password" required>
+        </div>
+
+        <div class="form-group">
+        <input type="text" class="form-control mt-2" placeholder="enter the company code" name="ccode" required>
+        </div>
+        <br>
+        <button type="submit" class="btn btn-info">Add</button>
+    </form>
+
+   
+</div>
+<div class="col-md-4">
+
+</div>
+</div>
+
+<div class="container mt-2 ">
+    <table class="table table-dark">
+        <thead>
+            <h3 class="text-center text-white bg-danger" >Triggered Data</h3>
+          <tr>
+            
+            <th scope="col">Company code</th>
+            <th scope="col">Job vacancies</th>
+            <th scope="col">Job title</th>
+            <th scope="col">Action</th>
+            <th scope="col">Date</th>
+          </tr>
+        </thead>
+      
+        <tbody>
+        {% for post in query %}
+        <tr>
+            <td>{{post.ccode}} </td>
+            <td>{{post.no_jobs}}</td>
+            <td>{{post.job_title}}</td>
+            <td>{{post.querys}}</td>
+            <td>{{post.date}}</td>
+          </tr>
+        {% endfor %}
+          
+        </tbody>
+      
+      </table>
+</div>
+
+
+{% endblock form %}
+
